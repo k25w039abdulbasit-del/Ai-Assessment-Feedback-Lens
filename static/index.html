@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FeedbackLens</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <div class="brand"><span class="logo">&#9678;</span> FeedbackLens <small>AI assignment feedback, teacher in control</small></div>
+  <span id="engine" class="badge"></span>
+</header>
+<nav>
+  <button data-tab="student" class="active">Student</button>
+  <button data-tab="teacher">Teacher review</button>
+  <button data-tab="rubrics">Rubrics</button>
+  <button data-tab="insights">Class insights</button>
+</nav>
+<main>
+  <section id="tab-student">
+    <div class="card">
+      <h2>Submit your assignment</h2>
+      <label>Assignment / rubric <select id="s-rubric"></select></label>
+      <p id="s-prompt" class="muted"></p>
+      <label>Your name <input id="s-name" placeholder="e.g. Ayesha Khan"></label>
+      <label>Upload a file (.txt, .md, .docx, .pdf) or paste below <input type="file" id="s-file" accept=".txt,.md,.docx,.pdf"></label>
+      <textarea id="s-text" rows="10" placeholder="Paste your answer here..."></textarea>
+      <div class="row"><span id="s-count" class="muted">0 words</span>
+        <button id="s-submit" class="primary">Submit</button></div>
+      <div id="s-msg"></div>
+    </div>
+    <div class="card">
+      <h2>Check your feedback</h2>
+      <p class="muted">Feedback appears after your instructor has reviewed and approved it.</p>
+      <div class="row2"><input id="c-id" type="number" placeholder="Submission ID"><input id="c-name" placeholder="Your name"><button id="c-go">View</button></div>
+      <div id="c-out"></div>
+    </div>
+  </section>
+
+  <section id="tab-teacher" hidden>
+    <div class="split">
+      <div class="card list"><h2>Submissions</h2><div id="t-list"></div></div>
+      <div class="card" id="t-detail"><p class="muted">Select a submission to review.</p></div>
+    </div>
+  </section>
+
+  <section id="tab-rubrics" hidden>
+    <div class="split">
+      <div class="card list"><h2>Rubrics</h2><div id="r-list"></div><button id="r-new">+ New rubric</button></div>
+      <div class="card" id="r-edit"><p class="muted">Select or create a rubric.</p></div>
+    </div>
+  </section>
+
+  <section id="tab-insights" hidden>
+    <div class="card">
+      <h2>Recurring mistakes across the class</h2>
+      <select id="i-rubric"></select>
+      <div id="i-out"></div>
+    </div>
+  </section>
+</main>
+<footer>Suggestions only - the instructor makes the final decision. Prototype built for OpenHack'26 (ED-02).</footer>
+<script src="/static/app.js"></script>
+</body>
+</html>
